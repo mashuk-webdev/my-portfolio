@@ -1,0 +1,113 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/functions/node_modules
+/.pnpm-store
+/pnpm-lock.yaml
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+firebase-debug.log*
+firestore-debug.log*
+database-debug.log*
+ui-debug.log*
+.dev-server*.log
+.prod-server*.log
+*.err.log
+
+# local env and secrets
+.env
+.env.*
+!.env*.example
+!.env.local.example
+.envrc
+.envrc.*
+.direnv/
+*.local
+*.secret
+*.secrets
+secret.*
+secrets.*
+credentials.*
+*.credentials
+!.secret.local.example
+
+functions/.env
+functions/.env.*
+!functions/.env*.example
+functions/.secret.local
+functions/.secret.local.*
+!functions/.secret.local.example
+functions/.runtimeconfig.json
+
+# private credentials and key material
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+*serviceAccount*.json
+*service-account*.json
+firebase-adminsdk*.json
+gcp-sa-key*.json
+google-credentials*.json
+*credentials*.json
+*oauth*.json
+
+# firebase local state
+.firebase/
+
+# cloud and infra local auth/config
+.aws/
+.azure/
+.gcloud/
+.config/gcloud/
+.kube/
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# package manager auth
+.npmrc
+.yarnrc.yml
+.pnpmrc
+!.npmrc.example
+!.yarnrc.example
+!.pnpmrc.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# turbo
+.turbo
+
+# misc
+.DS_Store
+.npmrc.local
+.yarnrc.local
+.pnpmrc.local
+.netrc

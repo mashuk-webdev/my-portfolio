@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 45% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 45% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 45% 10%;
+    --primary: 252 75% 60%; /* #6C4CE5 */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 215 45% 10%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 215 45% 40%;
+    --accent: 34 100% 71%; /* #FFB86B */
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 252 75% 60%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+  .dark {
+    --background: 215 45% 10%; /* #0F1724 */
+    --foreground: 210 40% 98%;
+    --card: 215 45% 15%;
+    --card-foreground: 210 40% 98%;
+    --popover: 215 45% 15%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 252 75% 60%; /* #6C4CE5 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 45% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 45% 20%;
+    --muted-foreground: 210 40% 60%;
+    --accent: 34 100% 71%; /* #FFB86B */
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 45% 25%;
+    --input: 215 45% 25%;
+    --ring: 252 75% 60%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer utilities {
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 1.5rem, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .animate-reveal-up {
+    animation: reveal-up 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    will-change: transform, opacity;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    background-image:
+      radial-gradient(circle at 12% 8%, hsl(var(--primary) / 0.11), transparent 34%),
+      radial-gradient(circle at 88% 1%, hsl(var(--accent) / 0.1), transparent 38%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  @media (max-width: 767px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
+
+  /* Hide system cursor only when custom cursor is explicitly enabled. */
+  @media (min-width: 768px) {
+    :root[data-custom-cursor="true"] body {
+      cursor: none;
+    }
+
+    :root[data-custom-cursor="true"] a,
+    :root[data-custom-cursor="true"] button,
+    :root[data-custom-cursor="true"] [role="button"],
+    :root[data-custom-cursor="true"] input,
+    :root[data-custom-cursor="true"] textarea,
+    :root[data-custom-cursor="true"] select,
+    :root[data-custom-cursor="true"] label[for] {
+      cursor: none;
+    }
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 0.75rem;
+    z-index: 80;
+    transform: translateY(-140%);
+    border-radius: 9999px;
+    border: 1px solid hsl(var(--primary) / 0.45);
+    background: hsl(var(--background) / 0.95);
+    color: hsl(var(--foreground));
+    padding: 0.45rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: transform 180ms ease;
+    backdrop-filter: blur(8px);
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+}
